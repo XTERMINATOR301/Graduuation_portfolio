@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educesol Users</title>
+    <style>
+    body {
+      background: #f8fafc;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      background: #2eb24c;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      color: white;
+    }
+    .navbar .logo {
+       display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 28px;
+      margin-right: 24px;
+    }
+    .navbar .logo-img {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .navbar .logo-text {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .navbar .menu {
+      font-size: 28px;
+      margin-right: 16px;
+      cursor: pointer;
+      }
+    .navbar .searchbar {
+      margin-left: 30px;
+      flex: 1;
+    }
+    .navbar input[type="search"] {
+      background: #006400;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 2px;
+      border: none;
+      width: 150px;
+    }
+    .navbar .lang {
+      margin-left: 24px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .navbar .icon-group {
+      margin-left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+       }
+    .navbar .icon-group img {
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 32px auto 0 auto;
+      padding: 0 16px;
+    }
+    .section-title {
+      color: #2eb24c;
+      font-weight: bold;
+      font-size: 24px;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+    .summary-cards {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      margin-top: 16px;
+       }
+    .summary-card {
+      flex: 1;
+      background: #ffe082;
+      border-radius: 16px;
+      padding: 24px 0 18px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+      font-weight: bold;
+      font-size: 18px;
+      position: relative;
+      min-width: 0;
+    }
+    .summary-card:nth-child(2) {
+      background: #90caf9;
+    }
+    .summary-card:nth-child(3) {
+      background: #b2dfdb;
+    }
+    .summary-card img {
+      width: 64px;
+       margin-bottom: 8px;
+    }
+    .summary-card .count {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 8px;
+      color: #2eb24c;
+    }
+    .students-section {
+      margin-top: 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.05);
+      padding: 24px 18px 18px 18px;
+    }
+    .students-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .students-header .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .students-header .add-btn {
+      background: #2eb24c;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 22px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .students-header .add-btn:hover {
+      background: #24973d;
+       }
+    .students-table-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .students-table-controls label {
+      font-size: 14px;
+      margin-right: 6px;
+    }
+    .students-table-controls select,
+    .students-table-controls input[type="search"] {
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-bottom: 10px;
+    }
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: bold;
+    }
+    td img.avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #2eb24c;
+      }
+    .action-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+      margin-right: 6px;
+      padding: 0;
+    }
+    .action-btn:last-child {
+      margin-right: 0;
+    }
+    .action-btn.view {
+      color: #2196f3;
+    }
+    .action-btn.edit {
+      color: #43a047;
+    }
+    .action-btn.delete {
+      color: #e53935;
+    }
+    .pagination-controls {
+      display: flex;
+       justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .pagination-btn, .pagination-page {
+      background: #f3f3f3;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 14px;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 0 2px;
+    }
+    .pagination-btn {
+      background: #2eb24c;
+      color: #fff;
+      font-weight: bold;
+    }
+    .pagination-btn:disabled {
+      background: #bdbdbd;
+       color: #fff;
+      cursor: not-allowed;
+    }
+    .pagination-page.active {
+      background: #2eb24c;
+      color: #fff;
+      font-weight: bold;
+    }
+    @media (max-width: 900px) {
+      .summary-cards {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .students-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+    }
+    @media (max-width: 700px) {
+      .container {
+        width: 100vw !important;
+         padding: 12px 4vw 18px 4vw !important;
+        box-sizing: border-box;
+        border-radius: 0 !important;
+        margin: 0;
+      }
+      .students-section {
+        padding: 12px 2vw 12px 2vw !important;
+        border-radius: 8px !important;
+      }
+      .summary-cards {
+        flex-direction: column;
+        gap: 12px;
+        }
+      table, th, td {
+        font-size: 13px !important;
+        word-break: break-word;
+      }
+      .students-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .students-table-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo">
+       <img src="Logo---white 1.png" style="width: 56px; height: 56px;" class="logo-img" alt="logo">
+      <span class="logo-text">Educesol</span>
+    </div>
+    <div class="menu" aria-hidden="true">&#9776;</div>
+    <div class="searchbar">
+      <input type="search" placeholder="Search" style="margin-left:auto" aria-label="Search">
+    </div>
+    <div class="lang">ENGLISH</div>
+    <div class="icon-group" aria-hidden="true">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/sun--v1.png" alt="theme">
+      <img src="https://img.icons8.com/ios-filled/24/ffffff/appointment-reminders--v1.png" alt="notifications">
+      <img src="https://img.icons8.com/ios-filled/24/2eb24c/user-male-circle.png" alt="user" style="background:#fff; border-radius:50%;">
+    </div>
+  </div>
+  <div class="container">
+    <div class="section-title">USERS</div>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <img src="online-class_5013702 1.png" alt="students">
+        STUDENTS
+        <div class="count">502</div>
+      </div>
+      <div class="summary-card">
+        <img src="workplace_3541543 1.png" alt="teachers">
+        TEACHERS
+        <div class="count">35</div>
+      </div>
+      <div class="summary-card">
+        <img src="geolocation_14670316 1.png" alt="non teaching">
+        NON TEACHING STAFF
+         <div class="count">12</div>
+      </div>
+    </div>
+    <div class="students-section">
+      <div class="students-header">
+        <span class="title">STUDENTS</span>
+        <button type="button" class="add-btn" aria-label="Add new student"><span style="font-size:18px;">+</span> Add New</button>
+      </div>
+      <div class="students-table-controls">
+        <div>
+          <label>Show</label>
+          <select aria-label="Show entries per page">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+          </select>
+          <label>Entries</label>
+        </div>
+        <div>
+          <input type="search" placeholder="Search" aria-label="Search students">
+        </div>
+      </div>
+       <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Student Name</th>
+            <th>Parent / Guardian Name</th>
+            <th>Gender</th>
+            <th>Parent Phone</th>
+            <th>Action<br>(view, edit and delete)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Ayo wale"></td>
+            <td>Ayo wale</td>
+            <td>Mr. &amp; Mrs. Wale</td>
+            <td>Male</td>
+            <td>08156773425</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Ayo wale"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Ayo wale"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Ayo wale"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+             </tr>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Zino Obeiko"></td>
+            <td>Zino Obeiko</td>
+            <td>Mr. &amp; Mrs. Obeiko</td>
+            <td>Male</td>
+            <td>09045367223</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Zino Obeiko"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Zino Obeiko"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Zino Obeiko"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+             <td><img class="avatar" src="1(1).png" alt="Rodiat Suleiman"></td>
+            <td>Rodiat Suleiman</td>
+            <td>Mr. &amp; Mrs. Suleiman</td>
+            <td>Female</td>
+            <td>07045637221</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Rodiat Suleiman"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Rodiat Suleiman"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Rodiat Suleiman"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Jimmy Jatt"></td>
+            <td>Jimmy Jatt</td>
+            <td>Mr. &amp; Mrs. Jatt</td>
+            <td>Male</td>
+            <td>07015637221</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Jimmy Jatt"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Jimmy Jatt"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Jimmy Jatt"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+              </tr>
+          <tr>
+            <td><img class="avatar" src="1(1).png" alt="Aisha Tunde"></td>
+            <td>Aisha Tunde</td>
+            <td>Mr. &amp; Mrs. Tunde</td>
+            <td>Female</td>
+            <td>09045637221</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Aisha Tunde"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Aisha Tunde"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Aisha Tunde"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Emmanuel Bedford"></td>
+            <td>Emmanuel Bedford</td>
+            <td>Mr. &amp; Mrs. Bedford</td>
+            <td>Male</td>
+            <td>08145638221</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Emmanuel Bedford"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Emmanuel Bedford"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Emmanuel Bedford"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+            <td><img class="avatar" src="1(1).png" alt="Grace Obi"></td>
+            <td>Grace Obi</td>
+            <td>Mr. &amp; Mrs. John</td>
+            <td>Female</td>
+             <td>07055637341</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Grace Obi"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Grace Obi"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Grace Obi"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Martins Ifeanyi"></td>
+            <td>Martins Ifeanyi</td>
+            <td>Mr. &amp; Mrs. Ifeanyi</td>
+            <td>Male</td>
+            <td>07026337281</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Martins Ifeanyi"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Martins Ifeanyi"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Martins Ifeanyi"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Olawale Okeleye"></td>
+            <td>Olawale Okeleye</td>
+            <td>Mr. &amp; Mrs. Kunle</td>
+            <td>Male</td>
+            <td>09145637421</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Olawale Okeleye"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Olawale Okeleye"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Olawale Okeleye"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+          <tr>
+            <td><img class="avatar" src="profile avatar.png" alt="Kazeem Jubril"></td>
+            <td>Kazeem Jubril</td>
+            <td>Mr. &amp; Mrs. Jubril</td>
+            <td>Male</td>
+            <td>07065637541</td>
+            <td>
+              <button type="button" class="action-btn view" title="View" aria-label="View Kazeem Jubril"><img src="oculist_8125710 1.png" alt="view icon"/></button>
+              <button type="button" class="action-btn edit" title="Edit" aria-label="Edit Kazeem Jubril"><img src="pen_7267127 1.png" alt="edit icon"/></button>
+              <button type="button" class="action-btn delete" title="Delete" aria-label="Delete Kazeem Jubril"><img src="delete_10308584 1.png" alt="delete icon"/></button>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size:13px;color:#888;">Showing 1 to 10 of 502 entries</span>
+        <div class="pagination-controls">
+          <button type="button" class="pagination-btn" aria-label="Previous page">Previous</button>
+          <span class="pagination-page active" aria-current="page">1</span>
+          <span class="pagination-page" role="button" tabindex="0" aria-label="Page 2">2</span>
+          <button type="button" class="pagination-btn" aria-label="Next page">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
