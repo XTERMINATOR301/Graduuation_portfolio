@@ -129,7 +129,6 @@ body{
 .main-nav a:hover{background:var(--glass)}
 
 /* theme toggle */
-.theme-toggle{background:none;border:0;cursor:pointer;font-size:18px}
 .theme-toggle{
   background:none;
   border:0;
