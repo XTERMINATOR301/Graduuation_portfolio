@@ -242,7 +242,7 @@ header .wrap, .site-header .wrap {
 .logo { font-weight: 700; text-decoration: none; color: var(--text); }
 
 /* Simple nav */
-nav, .main-nav { }
+nav, .main-nav 
 nav ul, .main-nav ul {
   list-style: none;
   display: flex;
