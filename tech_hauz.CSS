@@ -192,7 +192,7 @@ body{
   --muted:#9aa4b2;
   --accent:#56a9ff;
   --accent-2:#23d39a;
-  --text:#edf2f9;
+  --text:#bfc7d0; /* ash gray for dark-mode text */
   --glass: rgba(255,255,255,0.03);
 }
 
@@ -363,7 +363,7 @@ footer, .site-footer {
 :root.dark {
   --page-bg: #0b1020;
   --card-bg: #0f1724;
-  --text: black;
+  --text: #bfc7d0; /* ash gray for dark-mode text */
   --muted: #9aa4b2;
   --accent: #56a9ff;
 }
