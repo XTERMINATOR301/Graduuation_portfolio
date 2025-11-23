@@ -373,3 +373,10 @@ footer, .site-footer {
   --muted: #9aa4b2;
   --accent: #56a9ff;
 }
+
+/* Ensure container and section text is always black */
+.container,
+.site-container,
+section {
+  color: #000000;
+}
