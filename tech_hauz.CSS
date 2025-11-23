@@ -89,7 +89,7 @@ footer {
   --muted:#6b7280;
   --accent:#0b79ff;
   --accent-2:#0bce9b;
-  --text:#0b1220;
+  --text:#000000; /* changed to black for light-mode text */
   --glass: rgba(255,255,255,0.6);
   --max-width:1100px;
   --nav-bg: #0b79ff; /* navbar blue */
@@ -130,6 +130,13 @@ body{
 
 /* theme toggle */
 .theme-toggle{background:none;border:0;cursor:pointer;font-size:18px}
+.theme-toggle{
+  background:none;
+  border:0;
+  cursor:pointer;
+  font-size:18px;
+  color:var(--text); /* make the "Dark Mode" / toggle text ash */
+}
 
 /* container */
 .site-container{max-width:var(--max-width);margin:24px auto;padding:0 16px}
@@ -192,7 +199,7 @@ body{
   --muted:#9aa4b2;
   --accent:#56a9ff;
   --accent-2:#23d39a;
-  --text:#bfc7d0; /* ash gray for dark-mode text */
+  --text:#000000; /* changed to black for dark-mode text */
   --glass: rgba(255,255,255,0.03);
 }
 
@@ -208,7 +215,7 @@ body{
   --nav-bg: #e6f4ff;    /* light blue navbar */
   --card-bg: #ffffff;
   --accent: #0b79ff;
-  --text: #0b1220;
+  --text: #bfc7d0; /* ash gray for light-mode write-up text */
   --muted: #6b7280;
   --max-width: 1000px;
 }
